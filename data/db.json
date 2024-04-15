@@ -20,9 +20,21 @@
     },
     {
       "id": "2ff2",
-      "name": "a",
-      "price": "10",
-      "checked": false
+      "name": "b",
+      "price": "100",
+      "checked": true
+    },
+    {
+      "id": "5d25",
+      "name": "test",
+      "price": "4500",
+      "checked": true
+    },
+    {
+      "id": "5d25",
+      "name": "test",
+      "price": "4500",
+      "checked": true
     }
   ]
 }
