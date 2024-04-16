@@ -3,7 +3,7 @@
     <div class="card-body">
       <h3>Products</h3>
       <div class="card-body">
-        <input type="text" [(ngModel)]="keyword">&nbsp;
+        <input type="text" [(ngModel)]="appState.productState.keyword">&nbsp;
         <button (click)="searchProduct()" class="btn btn-outline-success">Search
         <i class="bi bi-search"></i></button>
       </div>
@@ -19,7 +19,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let product of products">
+        <tr *ngFor="let product of appState.productState.products">
           <td>{{product.name}}</td>
           <td>{{product.price}}</td>
           <td>
@@ -42,13 +42,13 @@
       </table>
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-          <li class="page-item" [class.disabled]="currentPage === 1">
+          <li class="page-item" [class.disabled]="appState.productState.currentPage === 1">
             <button class="page-link" (click)="previousPage()">Previous</button>
           </li>
-          <li class="page-item" *ngFor="let page of pages" [class.active]="currentPage === page">
+          <li class="page-item" *ngFor="let page of appState.productState.pages" [class.active]="appState.productState.currentPage === page">
             <button class="page-link" (click)="getPage(page)">{{page}}</button>
           </li>
-          <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <li class="page-item" [class.disabled]="appState.productState.currentPage === appState.productState.totalPages">
             <button class="page-link" (click)="nextPage()">Next</button>
           </li>
 

@@ -35,6 +35,12 @@
       "name": "test",
       "price": "4500",
       "checked": true
+    },
+    {
+      "id": "5a9b",
+      "name": "mm",
+      "price": "500",
+      "checked": false
     }
   ]
 }
