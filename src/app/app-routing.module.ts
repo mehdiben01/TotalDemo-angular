@@ -4,21 +4,41 @@ import {HomeComponent} from "./home/home.component";
 import {ProductsComponent} from "./products/products.component";
 import {NewProductComponent} from "./new-product/new-product.component";
 import {EditProductComponent} from "./edit-product/edit-product.component";
+import {LoginComponent} from "./login/login.component";
+import {AdminTemplateComponent} from "./admin-template/admin-template.component";
+import {Auth} from "./guards/auth.guard";
+import {Authori} from "./guards/authori.guard";
+import {NotAuthoriComponent} from "./not-authori/not-authori.component";
 
 const routes: Routes = [
   {
-    path : "home", component : HomeComponent
+    path : "login", component : LoginComponent
   },
   {
-    path : "products", component : ProductsComponent
+    path: "admin", component:AdminTemplateComponent, canActivate:[Auth], children: [
+      {
+        path : "products", component : ProductsComponent
+      },
+      {
+        path : "new-product" , component : NewProductComponent, canActivate: [Authori]
+      }
+      ,
+      {
+        path : "editProduct/:id" , component : EditProductComponent,canActivate: [Authori]
+      },
+      {
+        path : "home", component : HomeComponent
+      },
+      {
+        path : "notAuthori", component : NotAuthoriComponent
+      }
+    ]
   },
+
+
   {
-    path : "new-product" , component : NewProductComponent
-  }
-  ,
-  {
-    path : "editProduct/:id" , component : EditProductComponent
-  }
+    path : "", redirectTo: "login", pathMatch:'full'
+  },
 ];
 
 

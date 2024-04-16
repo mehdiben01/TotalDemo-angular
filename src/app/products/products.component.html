@@ -13,27 +13,27 @@
         <tr>
           <th>Name</th>
           <th>Price</th>
-          <th>Checked</th>
-          <th>Edit</th>
-          <th>Delete</th>
+          <th *ngIf="appState.authState.roles.includes('ADMIN')">Checked</th>
+          <th *ngIf="appState.authState.roles.includes('ADMIN')">Edit</th>
+          <th *ngIf="appState.authState.roles.includes('ADMIN')">Delete</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let product of appState.productState.products">
           <td>{{product.name}}</td>
           <td>{{product.price}}</td>
-          <td>
+          <td *ngIf="appState.authState.roles.includes('ADMIN')">
             <button (click)="handleCheckProduct(product)" class="btn btn-outline-success">
               <i [class]="product.checked?'bi bi-check':'bi bi-circle'"></i>
             </button>
           </td>
-          <td>
+          <td *ngIf="appState.authState.roles.includes('ADMIN')">
             <button (click)="handleEdit(product)" class="btn btn-outline-success">
               <i class="bi bi-pencil"></i>
             </button>
           </td>
-          <td>
-            <button (click)="handleDelete(product)" class="btn btn-outline-danger">
+          <td *ngIf="appState.authState.roles.includes('ADMIN')">
+            <button (click)="handleDelete(product)" class="btn btn-outline-danger" >
               <i class="bi bi-trash"></i>
             </button>
           </td>
